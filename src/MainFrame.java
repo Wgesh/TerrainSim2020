@@ -5,6 +5,8 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+        
     }
 
     /**
@@ -16,41 +18,93 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        PanelCanvasContainer = new javax.swing.JPanel();
+        PanelCanvas = new javax.swing.JPanel();
+        PanelControls = new javax.swing.JPanel();
+        ButtonGenerate = new javax.swing.JButton();
+        TextInputX = new javax.swing.JTextField();
+        TextInputZ = new javax.swing.JTextField();
+        TextMessageOutput = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 592));
         setMinimumSize(new java.awt.Dimension(1000, 592));
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        PanelCanvas.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout PanelCanvasLayout = new javax.swing.GroupLayout(PanelCanvas);
+        PanelCanvas.setLayout(PanelCanvasLayout);
+        PanelCanvasLayout.setHorizontalGroup(
+            PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 580, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        PanelCanvasLayout.setVerticalGroup(
+            PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 580, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelCanvasContainerLayout = new javax.swing.GroupLayout(PanelCanvasContainer);
+        PanelCanvasContainer.setLayout(PanelCanvasContainerLayout);
+        PanelCanvasContainerLayout.setHorizontalGroup(
+            PanelCanvasContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCanvasContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        PanelCanvasContainerLayout.setVerticalGroup(
+            PanelCanvasContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCanvasContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        PanelControls.setMaximumSize(new java.awt.Dimension(408, 124));
+        PanelControls.setMinimumSize(new java.awt.Dimension(408, 124));
+        PanelControls.setRequestFocusEnabled(false);
+
+        ButtonGenerate.setText("Generate");
+        ButtonGenerate.setRequestFocusEnabled(false);
+        ButtonGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonGenerateActionPerformed(evt);
+            }
+        });
+
+        TextInputX.setText("enter x dimensions");
+
+        TextInputZ.setText("enter z dimensions");
+
+        TextMessageOutput.setEditable(false);
+
+        javax.swing.GroupLayout PanelControlsLayout = new javax.swing.GroupLayout(PanelControls);
+        PanelControls.setLayout(PanelControlsLayout);
+        PanelControlsLayout.setHorizontalGroup(
+            PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextMessageOutput, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelControlsLayout.createSequentialGroup()
+                        .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addComponent(ButtonGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        PanelControlsLayout.setVerticalGroup(
+            PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelControlsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TextMessageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonGenerate)
                 .addContainerGap())
         );
 
@@ -59,16 +113,33 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 408, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(PanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelCanvasContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelCanvasContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanelControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGenerateActionPerformed
+        int inputX = Integer.parseInt(TextInputX.getText());
+        int inputZ = Integer.parseInt(TextInputZ.getText());
+        
+        if (inputX <=  100 && inputZ <= 100) {
+            TerrainGenerator.generateTerrain(inputX, inputZ);
+            //TerrainGenerator terrain = new TerrainGenerator(inputX, inputZ);
+        } else {
+            TextMessageOutput.setText("input values too large!");
+        }
+        
+        TerrainGenerator.printBlocks(inputX, inputZ);
+    }//GEN-LAST:event_ButtonGenerateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +177,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton ButtonGenerate;
+    private javax.swing.JPanel PanelCanvas;
+    private javax.swing.JPanel PanelCanvasContainer;
+    private javax.swing.JPanel PanelControls;
+    private javax.swing.JTextField TextInputX;
+    private javax.swing.JTextField TextInputZ;
+    private javax.swing.JTextField TextMessageOutput;
     // End of variables declaration//GEN-END:variables
 }

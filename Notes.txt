@@ -1,0 +1,22 @@
+air
+air
+air
+air
+air
+air
+air
+air
+grass - 12 up, grassLevel = 20*0.6 = 12, 60% up, index z=11
+dirt - 1/1 chance for dirt
+dirt - 1/1 chance for dirt
+dirt - 1/1 chance for dirt
+dirt - 1/1 chance for dirt
+stone - 1/3 chance for dirt
+stone - 1/3 chance for dirt
+stone - 1/3 chance for dirt
+stone - 1/6 chance for dirt
+stone - 1/6 chance for dirt
+stone - 1/6 chance for dirt
+stone - 1/200 chance for dirt
+
+20 block vertical
