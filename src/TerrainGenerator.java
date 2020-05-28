@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 /*
-* TODO: deal with is grass generates underground
+* TODO: deal with if grass generates underground
 * TODO: might need to fix some odd cases in boolean logic (lock the possible grid size to larger than something?)
-* TODO: make things adjustable
+* TODO: make things adjustable + in interface
 */
 
 public class TerrainGenerator {
