@@ -4,6 +4,9 @@ import java.util.ArrayList;
 * TODO: deal with if grass generates underground
 * TODO: might need to fix some odd cases in boolean logic (lock the possible grid size to larger than something?)
 * TODO: make things adjustable + in interface
+* TODO: code in hills and mountains
+* TODO: code in water spots?
+* TODO: different material landscapes
 */
 
 public class TerrainGenerator {

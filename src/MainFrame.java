@@ -6,7 +6,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         
-        
+        TextMessageOutput.setText("enter numbers between 10 and 100");
     }
 
     /**
@@ -131,14 +131,15 @@ public class MainFrame extends javax.swing.JFrame {
         int inputX = Integer.parseInt(TextInputX.getText());
         int inputZ = Integer.parseInt(TextInputZ.getText());
         
-        if (inputX <=  100 && inputZ <= 100) {
+        if ((inputX <=  100 && inputZ <= 100) && (inputX >= 10 && inputZ >= 10)) {
             TerrainGenerator.generateTerrain(inputX, inputZ);
             //TerrainGenerator terrain = new TerrainGenerator(inputX, inputZ);
+            TextMessageOutput.setText("grid printed to output");
+            TerrainGenerator.printBlocks(inputX, inputZ);
         } else {
-            TextMessageOutput.setText("input values too large!");
+            TextMessageOutput.setText("enter numbers between 10 and 100!");
         }
         
-        TerrainGenerator.printBlocks(inputX, inputZ);
     }//GEN-LAST:event_ButtonGenerateActionPerformed
 
     /**
