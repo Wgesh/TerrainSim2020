@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
 /*
 * TODO: deal with if grass generates underground
-* TODO: might need to fix some odd cases in boolean logic (lock the possible grid size to larger than something?)
-* TODO: make things adjustable + in interface
+* TODO: make things adjustable in code
 * TODO: code in hills and mountains
 * TODO: code in water spots?
 * TODO: different material landscapes
@@ -20,7 +17,16 @@ public class TerrainGenerator {
     private static int randomDirtStoneCoefficient; // decides probability of dirt generating
     private static int grassLevel; // the grass level within the grid, where air is above and dirt generated procedurally underneath
     
-    public static void generateTerrain(int x, int z /*possibly y*/ /*other parameters: hill size, water stuff, thickness of layers etc*/) {
+    public static boolean parameterCheck(int x, int z, int grassParam, int hillFreqParam, int hillHeightParam) {
+        if ((x >= 10 && z >= 10) && (x <=  2000 && z <= 2000) && (grassParam >= 0 && grassParam < z) && (hillFreqParam >= 0 && hillFreqParam <= 100) &&
+                (hillHeightParam >= 0 && hillHeightParam <= 100)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static void generateTerrain(int x, int z, int grassParam, int hillFreqParam, int hillHeightParam /*possibly y*/ /*other parameters: hill size, water stuff, thickness of layers etc*/) {
         blocks = new MaterialBlock[x][z];
         totalBlocks = x * z;
         

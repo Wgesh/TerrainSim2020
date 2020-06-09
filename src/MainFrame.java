@@ -6,7 +6,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         
-        TextMessageOutput.setText("enter numbers between 10 and 100");
+        TextMessageOutput.setText("Dimensions must be more than 10\n and less than 2000. Parameters\n must be within dimensions");
     }
 
     /**
@@ -24,11 +24,20 @@ public class MainFrame extends javax.swing.JFrame {
         ButtonGenerate = new javax.swing.JButton();
         TextInputX = new javax.swing.JTextField();
         TextInputZ = new javax.swing.JTextField();
-        TextMessageOutput = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TextMessageOutput = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        TextInputHillHeight = new javax.swing.JTextField();
+        TextInputGrass = new javax.swing.JTextField();
+        TextInputHillFreq = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 592));
-        setMinimumSize(new java.awt.Dimension(1000, 592));
+        setMaximumSize(new java.awt.Dimension(861, 592));
+        setMinimumSize(new java.awt.Dimension(861, 592));
         setResizable(false);
 
         PanelCanvas.setBackground(new java.awt.Color(255, 255, 255));
@@ -41,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         PanelCanvasLayout.setVerticalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PanelCanvasContainerLayout = new javax.swing.GroupLayout(PanelCanvasContainer);
@@ -73,39 +82,89 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        TextInputX.setText("enter x dimensions");
+        jLabel1.setText("X Dimensions");
 
-        TextInputZ.setText("enter z dimensions");
+        jLabel2.setText("Z Dimensions");
 
         TextMessageOutput.setEditable(false);
+        TextMessageOutput.setColumns(10);
+        TextMessageOutput.setFont(new java.awt.Font("Dialog", 2, 14)); // NOI18N
+        TextMessageOutput.setRows(2);
+        TextMessageOutput.setAutoscrolls(false);
+        TextMessageOutput.setFocusable(false);
+        TextMessageOutput.setRequestFocusEnabled(false);
+        TextMessageOutput.setVerifyInputWhenFocusTarget(false);
+        jScrollPane1.setViewportView(TextMessageOutput);
+
+        jLabel3.setText("Grass Level");
+
+        jLabel4.setText("Hill Frequency (0-100)");
+
+        jLabel5.setText("Hill Height (0-100)");
 
         javax.swing.GroupLayout PanelControlsLayout = new javax.swing.GroupLayout(PanelControls);
         PanelControls.setLayout(PanelControlsLayout);
         PanelControlsLayout.setHorizontalGroup(
             PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextMessageOutput, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelControlsLayout.createSequentialGroup()
-                        .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addComponent(ButtonGenerate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12)
+                .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextInputGrass, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextInputHillFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextInputHillHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(ButtonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         PanelControlsLayout.setVerticalGroup(
             PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelControlsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TextMessageOutput, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(PanelControlsLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(22, 22, 22)
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonGenerate)
-                .addContainerGap())
+                .addGap(60, 60, 60)
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextInputGrass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(66, 66, 66)
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextInputHillFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(16, 16, 16)
+                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextInputHillHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(170, 170, 170)
+                .addComponent(ButtonGenerate))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,32 +173,41 @@ public class MainFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, 396, Short.MAX_VALUE)
+                .addComponent(PanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelCanvasContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelCanvasContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PanelControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGenerateActionPerformed
-        int inputX = Integer.parseInt(TextInputX.getText());
-        int inputZ = Integer.parseInt(TextInputZ.getText());
-        
-        if ((inputX <=  100 && inputZ <= 100) && (inputX >= 10 && inputZ >= 10)) {
-            TerrainGenerator.generateTerrain(inputX, inputZ);
-            //TerrainGenerator terrain = new TerrainGenerator(inputX, inputZ);
-            TextMessageOutput.setText("grid printed to output");
-            TerrainGenerator.printBlocks(inputX, inputZ);
-        } else {
-            TextMessageOutput.setText("enter numbers between 10 and 100!");
+        try {
+            int inputX = Integer.parseInt(TextInputX.getText());
+            int inputZ = Integer.parseInt(TextInputZ.getText());
+
+            int grassParam = Integer.parseInt(TextInputGrass.getText());
+
+            int hillFreqParam = Integer.parseInt(TextInputHillFreq.getText());
+            int hillHeightParam = Integer.parseInt(TextInputHillHeight.getText());
+            
+            if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, hillFreqParam, hillHeightParam)) {
+                TerrainGenerator.generateTerrain(inputX, inputZ, grassParam, hillFreqParam, hillHeightParam);
+                TerrainGenerator.printBlocks(inputX, inputZ);
+                TextMessageOutput.setText("grid printed to output");
+            } else {
+                TextMessageOutput.setText("Something wrong with inputs!");
+            }
+        } catch (Exception e) {
+            TextMessageOutput.setText("Something wrong with inputs!");
         }
-        
     }//GEN-LAST:event_ButtonGenerateActionPerformed
 
     /**
@@ -182,8 +250,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel PanelCanvas;
     private javax.swing.JPanel PanelCanvasContainer;
     private javax.swing.JPanel PanelControls;
+    private javax.swing.JTextField TextInputGrass;
+    private javax.swing.JTextField TextInputHillFreq;
+    private javax.swing.JTextField TextInputHillHeight;
     private javax.swing.JTextField TextInputX;
     private javax.swing.JTextField TextInputZ;
-    private javax.swing.JTextField TextMessageOutput;
+    private javax.swing.JTextArea TextMessageOutput;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
