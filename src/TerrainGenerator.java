@@ -17,23 +17,25 @@ public class TerrainGenerator {
     private static int tempZPos; // storing where blocks will be placed
     private static int randomDirtStoneCoefficient; // decides probability of dirt generating
     private static int grassLevel; // the grass level within the grid, where air is above and dirt generated procedurally underneath
+    private static double flatParamTemp; // how flat the top grass should be
     
-    public static boolean parameterCheck(int x, int z, int grassParam, int hillFreqParam, int hillHeightParam) {
-        if ((x >= 15 && z >= 15) && (x <=  600 && z <= 600) && (grassParam >= 0 && grassParam < z) && (hillFreqParam >= 0 && hillFreqParam <= 100) &&
-                (hillHeightParam >= 0 && hillHeightParam <= 100)) {
+    public static boolean parameterCheck(int x, int z, int grassParam, double flatParam, int hillFreqParam, int hillHeightParam) {
+        if ((x >= 15 && z >= 15) && (x <=  600 && z <= 600) && (grassParam >= 0 && grassParam < z - 2) && (flatParam >= 0.0 && flatParam <= 1.0) && 
+                (hillFreqParam >= 0 && hillFreqParam <= 100) && (hillHeightParam >= 0 && hillHeightParam <= 100)) {
             return true;
         } else {
             return false;
         }
     }
     
-    public static void generateTerrain(int x, int z, int grassParam, int hillFreqParam, int hillHeightParam /*possibly y*/ /*other parameters: hill size, water stuff, thickness of layers etc*/) {
+    public static void generateTerrain(int x, int z, int grassParam, double flatParam, int hillFreqParam, int hillHeightParam /*possibly y*/ /*other parameters: hill size, water stuff, thickness of layers etc*/) {
         blocks = new MaterialBlock[x][z];
         totalBlocks = x * z;
         
         tempZPos = z - 1;
         
-        grassLevel = (int)((double)z * 0.6); // set grass level to 60% above bottom
+        grassLevel = grassParam;
+        flatParamTemp = flatParam;
         
         for (int i = 0; i < totalBlocks; i ++) {
             dropBlock();
@@ -72,19 +74,19 @@ public class TerrainGenerator {
         // choose the type of block
         if (tempZPos > 0) {
             if (blocks[tempXPos][tempZPos - 1].getType().equals("grass") || blocks[tempXPos][tempZPos - 1].getType().equals("air")) {
-                block = new MaterialBlock("air");
-            } else if (checkDirtThickness()) {
-                block = new MaterialBlock("grass");
+                block = new MaterialBlock("air", false, 0);
+            } else if (grassPlaceCheck()) {
+                block = new MaterialBlock("grass", false, 0);
             } else if ((int)(Math.random()*randomDirtStoneCoefficient)+1 == 1) {
-                block = new MaterialBlock("dirt");
+                block = new MaterialBlock("dirt", false, 0);
             } else {
-                block = new MaterialBlock("stone");
+                block = new MaterialBlock("stone", false, 0);
             }
         } else {
             if ((int)(Math.random()*randomDirtStoneCoefficient)+1 == 1) {
-                block = new MaterialBlock("dirt");
+                block = new MaterialBlock("dirt", false, 0);
             } else {
-                block = new MaterialBlock("stone");
+                block = new MaterialBlock("stone", false, 0);
             }
         }
         
@@ -94,29 +96,39 @@ public class TerrainGenerator {
         
     }
     
-    private static boolean checkDirtThickness() {
-        for (int i = 0; i < 5; i ++) {
-            if (tempZPos - i < 0) {
-                return false;
-            }
-            
-            if (blocks[tempXPos][tempZPos - i] == null) {
-                
-            } else {
-                // if any block within 4 blocks under the given coordinate is not dirt return false
-                if (!(blocks[tempXPos][tempZPos - i].getType().equals("dirt"))) {
+    private static void hillSetup() {
+        
+    }
+    
+    private static boolean grassPlaceCheck() { // checks whether to place grass or not
+        try {
+            if (tempZPos >= grassLevel + 2) {
+                return true;
+            } else if (blocks[tempXPos - 1][tempZPos].getType().equals("grass") && (Math.random() <= flatParamTemp)) {
+                    return true;
+            } else if (tempZPos >= grassLevel - 1) {
+                if ((int)(Math.random()*6)+1 == 1) {
+                    return true;
+                } else {
                     return false;
                 }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            if (tempZPos >= grassLevel - 1) {
+                return true;
+            } else {
+                return false;
             }
         }
-        return true;
     }
     
     public static MaterialBlock[][] blocksArray() {
         return blocks;
     }
     
-    public static void printBlocks(int x, int z) {
+    public static void printBlocks(int x, int z) { // used for initial testing
         System.out.println("");
         for (int i = z - 1; i > -1; i --) {
             for (int k = 0; k < x; k ++) {
