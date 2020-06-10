@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+
 public class MainFrame extends javax.swing.JFrame {
 
     /**
@@ -6,7 +8,7 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents();
         
-        TextMessageOutput.setText("Dimensions must be more than 10\n and less than 2000. Parameters\n must be within dimensions");
+        TextMessageOutput.setText("Dimensions must be more than 15\n and less than 600. Parameters\n must be within dimensions");
     }
 
     /**
@@ -41,16 +43,17 @@ public class MainFrame extends javax.swing.JFrame {
         setResizable(false);
 
         PanelCanvas.setBackground(new java.awt.Color(255, 255, 255));
+        PanelCanvas.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout PanelCanvasLayout = new javax.swing.GroupLayout(PanelCanvas);
         PanelCanvas.setLayout(PanelCanvasLayout);
         PanelCanvasLayout.setHorizontalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         PanelCanvasLayout.setVerticalGroup(
             PanelCanvasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout PanelCanvasContainerLayout = new javax.swing.GroupLayout(PanelCanvasContainer);
@@ -59,15 +62,15 @@ public class MainFrame extends javax.swing.JFrame {
             PanelCanvasContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCanvasContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(PanelCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelCanvasContainerLayout.setVerticalGroup(
             PanelCanvasContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCanvasContainerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelCanvas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(PanelCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelControls.setMaximumSize(new java.awt.Dimension(408, 124));
@@ -81,6 +84,10 @@ public class MainFrame extends javax.swing.JFrame {
                 ButtonGenerateActionPerformed(evt);
             }
         });
+
+        TextInputX.setText("15");
+
+        TextInputZ.setText("15");
 
         jLabel1.setText("X Dimensions");
 
@@ -101,6 +108,12 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4.setText("Hill Frequency (0-100)");
 
         jLabel5.setText("Hill Height (0-100)");
+
+        TextInputHillHeight.setText("1");
+
+        TextInputGrass.setText("1");
+
+        TextInputHillFreq.setText("1");
 
         javax.swing.GroupLayout PanelControlsLayout = new javax.swing.GroupLayout(PanelControls);
         PanelControls.setLayout(PanelControlsLayout);
@@ -163,8 +176,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextInputHillHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(170, 170, 170)
-                .addComponent(ButtonGenerate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonGenerate)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,8 +214,13 @@ public class MainFrame extends javax.swing.JFrame {
             
             if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, hillFreqParam, hillHeightParam)) {
                 TerrainGenerator.generateTerrain(inputX, inputZ, grassParam, hillFreqParam, hillHeightParam);
-                TerrainGenerator.printBlocks(inputX, inputZ);
-                TextMessageOutput.setText("grid printed to output");
+                
+                int panelHeight = PanelCanvas.getHeight();
+                int panelWidth = PanelCanvas.getWidth();
+                Graphics g = PanelCanvas.getGraphics();
+                Drawer.drawTerrain(g, panelHeight, panelWidth, TerrainGenerator.blocksArray(), inputX, inputZ);
+                
+                TextMessageOutput.setText("Terrain Drawn!");
             } else {
                 TextMessageOutput.setText("Something wrong with inputs!");
             }

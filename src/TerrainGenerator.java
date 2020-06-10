@@ -4,6 +4,7 @@
 * TODO: code in hills and mountains
 * TODO: code in water spots?
 * TODO: different material landscapes
+* TODO: grass must place within certain range of the grassLevel var
 */
 
 public class TerrainGenerator {
@@ -18,7 +19,7 @@ public class TerrainGenerator {
     private static int grassLevel; // the grass level within the grid, where air is above and dirt generated procedurally underneath
     
     public static boolean parameterCheck(int x, int z, int grassParam, int hillFreqParam, int hillHeightParam) {
-        if ((x >= 10 && z >= 10) && (x <=  2000 && z <= 2000) && (grassParam >= 0 && grassParam < z) && (hillFreqParam >= 0 && hillFreqParam <= 100) &&
+        if ((x >= 15 && z >= 15) && (x <=  600 && z <= 600) && (grassParam >= 0 && grassParam < z) && (hillFreqParam >= 0 && hillFreqParam <= 100) &&
                 (hillHeightParam >= 0 && hillHeightParam <= 100)) {
             return true;
         } else {
@@ -58,8 +59,8 @@ public class TerrainGenerator {
         }
         
         // decide probability of dirt placement
-        if (tempZPos < grassLevel - 11) { // 1/25 chance at 11+ blocks under grassLevel
-            randomDirtStoneCoefficient = 30;
+        if (tempZPos < grassLevel - 11) { // 1/35 chance at 11+ blocks under grassLevel
+            randomDirtStoneCoefficient = 35;
         } else if (tempZPos < grassLevel - 8) { // 1/6 chance at 8-10 blocks under grassLevel
             randomDirtStoneCoefficient = 6;
         } else if (tempZPos < grassLevel - 5) { // 1/3 chance at 5-7 blocks under ""
@@ -87,17 +88,7 @@ public class TerrainGenerator {
             }
         }
         
-//        if((tempZPos > 0 && blocks[tempXPos][tempZPos - 1].getType().equals("grass")) || blocks[tempXPos][tempZPos - 1].getType().equals("air")) {
-//            block = new MaterialBlock("air");
-//        } else if (tempZPos > 0 && checkDirtThickness()) {
-//            block = new MaterialBlock("grass");
-//        } else if ((int)(Math.random()*randomDirtStoneCoefficient)+1 == 1) {
-//            block = new MaterialBlock("dirt");
-//        } else {
-//            block = new MaterialBlock("stone");
-//        }
-        
-        // setblock
+        // setblock into array
         blocks[tempXPos][tempZPos] = block;
         
         
@@ -119,6 +110,10 @@ public class TerrainGenerator {
             }
         }
         return true;
+    }
+    
+    public static MaterialBlock[][] blocksArray() {
+        return blocks;
     }
     
     public static void printBlocks(int x, int z) {
