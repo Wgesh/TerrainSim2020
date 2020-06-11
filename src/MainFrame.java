@@ -80,6 +80,7 @@ public class MainFrame extends javax.swing.JFrame {
         PanelControls.setMaximumSize(new java.awt.Dimension(408, 124));
         PanelControls.setMinimumSize(new java.awt.Dimension(408, 124));
         PanelControls.setRequestFocusEnabled(false);
+        PanelControls.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ButtonGenerate.setText("Generate");
         ButtonGenerate.setRequestFocusEnabled(false);
@@ -88,14 +89,24 @@ public class MainFrame extends javax.swing.JFrame {
                 ButtonGenerateActionPerformed(evt);
             }
         });
+        PanelControls.add(ButtonGenerate, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 568, 251, -1));
 
         TextInputX.setText("75");
+        TextInputX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextInputXActionPerformed(evt);
+            }
+        });
+        PanelControls.add(TextInputX, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 70, -1));
 
-        TextInputZ.setText("50");
+        TextInputZ.setText("75");
+        PanelControls.add(TextInputZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 70, -1));
 
         jLabel1.setText("X Dimensions");
+        PanelControls.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 124, -1, -1));
 
         jLabel2.setText("Z Dimensions");
+        PanelControls.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 164, -1, -1));
 
         TextMessageOutput.setEditable(false);
         TextMessageOutput.setColumns(10);
@@ -107,24 +118,33 @@ public class MainFrame extends javax.swing.JFrame {
         TextMessageOutput.setVerifyInputWhenFocusTarget(false);
         jScrollPane1.setViewportView(TextMessageOutput);
 
+        PanelControls.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 251, 80));
+
         jLabel3.setText("Grass Level");
+        PanelControls.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 254, -1, -1));
 
         jLabel4.setText("Hill Frequency (0-100)");
+        PanelControls.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 394, -1, -1));
 
         jLabel5.setText("Hill Width (0-40)");
+        PanelControls.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 474, -1, -1));
 
-        TextInputHillHeight.setText("0.8");
+        TextInputHillHeight.setText("0.7");
         TextInputHillHeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextInputHillHeightActionPerformed(evt);
             }
         });
+        PanelControls.add(TextInputHillHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 430, 70, -1));
 
-        TextInputGrass.setText("7");
+        TextInputGrass.setText("45");
+        PanelControls.add(TextInputGrass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 70, -1));
 
-        TextInputHillFreq.setText("80");
+        TextInputHillFreq.setText("90");
+        PanelControls.add(TextInputHillFreq, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 70, -1));
 
         jLabel6.setText("Terrain Flatness (0-1)");
+        PanelControls.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 294, -1, -1));
 
         TextInputFlat.setText("0.85");
         TextInputFlat.addActionListener(new java.awt.event.ActionListener() {
@@ -132,93 +152,13 @@ public class MainFrame extends javax.swing.JFrame {
                 TextInputFlatActionPerformed(evt);
             }
         });
+        PanelControls.add(TextInputFlat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 70, -1));
 
         jLabel7.setText("Hill Height (0-1)");
+        PanelControls.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 434, -1, -1));
 
         TextInputHillWidth.setText("15");
-
-        javax.swing.GroupLayout PanelControlsLayout = new javax.swing.GroupLayout(PanelControls);
-        PanelControls.setLayout(PanelControlsLayout);
-        PanelControlsLayout.setHorizontalGroup(
-            PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addGap(12, 12, 12)
-                .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputGrass, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputFlat, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputHillFreq, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputHillHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputHillWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(ButtonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        PanelControlsLayout.setVerticalGroup(
-            PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelControlsLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(16, 16, 16)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(66, 66, 66)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputGrass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(16, 16, 16)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputFlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(76, 76, 76)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputHillFreq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(16, 16, 16)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputHillHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(16, 16, 16)
-                .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputHillWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(74, 74, 74)
-                .addComponent(ButtonGenerate))
-        );
+        PanelControls.add(TextInputHillWidth, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 470, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -233,9 +173,9 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PanelCanvasContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(PanelControls, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelControls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -244,6 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void ButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonGenerateActionPerformed
         try {
+            // grab all the inputs
             int inputX = Integer.parseInt(TextInputX.getText());
             int inputZ = Integer.parseInt(TextInputZ.getText());
 
@@ -254,15 +195,15 @@ public class MainFrame extends javax.swing.JFrame {
             double hillHeightParam = Double.parseDouble(TextInputHillHeight.getText());
             int hillWidthParam = Integer.parseInt(TextInputHillWidth.getText());
             
-            if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam, hillWidthParam)) {
+            if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam, hillWidthParam)) { // check if inputs are within parameters
+                // generate the terrain
                 TerrainGenerator.generateTerrain(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam, hillWidthParam);
                 
+                // draw terrain
                 int panelHeight = PanelCanvas.getHeight();
                 int panelWidth = PanelCanvas.getWidth();
                 Graphics g = PanelCanvas.getGraphics();
                 Drawer.drawTerrain(g, panelHeight, panelWidth, TerrainGenerator.blocksArray(), inputX, inputZ);
-                
-                TerrainGenerator.printBottomlayer(inputX); // TEMP
                 
                 TextMessageOutput.setText("Terrain Drawn!");
             } else {
@@ -270,7 +211,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             System.out.println(e);
-            TextMessageOutput.setText("Something wrong with inputsssss!");
+            TextMessageOutput.setText("Something wrong with inputs!\n" + "(" + e + ")");
         }
     }//GEN-LAST:event_ButtonGenerateActionPerformed
 
@@ -281,6 +222,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void TextInputHillHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextInputHillHeightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextInputHillHeightActionPerformed
+
+    private void TextInputXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextInputXActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextInputXActionPerformed
 
     /**
      * @param args the command line arguments

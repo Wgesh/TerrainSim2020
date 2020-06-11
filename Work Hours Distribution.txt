@@ -1,4 +1,4 @@
-Terrain Generating Algorithm: 6 hours
+Terrain Generating Algorithm: 7 hours
 
 UI Design and Input Management: 2 hours
 

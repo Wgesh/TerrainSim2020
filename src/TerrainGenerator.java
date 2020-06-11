@@ -42,7 +42,13 @@ public class TerrainGenerator {
         hillWidthParamTemp = hillWidthParam;
         
         for (int i = 0; i < totalBlocks; i ++) {
+            if (i > x) { // once past the bottom layer check if block being placed is over a hill base
+                grassLevel = grassLevel + blocks[tempXPos][0].getHillStrength() + 1;
+            }
+            
             dropBlock();
+            
+            grassLevel = grassParam; // reset the grassLevel back to regular
             
             if (i == x) { // after first row done, generate where hills be
                 hillSetup(x);
@@ -50,7 +56,7 @@ public class TerrainGenerator {
             
             tempXPos ++;
             tempZPos = z - 1;
-            if (tempXPos == x) {
+            if (tempXPos == x) { // once reached right side of grid dimensions, go back to left
                 tempXPos = 0;
             }
         }
@@ -118,7 +124,7 @@ public class TerrainGenerator {
             if (i > 0 && blocks[i - 1][0].isHill() && hillWidthCounter < hillWidthParamTemp) { // hill started directly to left?
                 if (hillAscend) { // ascending edge of hill
                     // decide how steep the next block should be
-                    if (Math.random() <= hillHeightParamTemp - 0.2) {
+                    if (Math.random() <= hillHeightParamTemp - 0.2) { // even if hill height 1 dont always jump up 2 blocks
                         blocks[i][0].setHill(true, blocks[i - 1][0].getHillStrength() + 2);
                         hillWidthCounter ++;
                     } else if (Math.random() <= hillHeightParamTemp) {
@@ -133,7 +139,7 @@ public class TerrainGenerator {
                     if (blocks[i - 1][0].getHillStrength() == 1) {
                         blocks[i][0].setHill(true, 1);
                         hillWidthCounter ++;
-                    } else if (Math.random() <= hillHeightParamTemp - 0.2 && blocks[i - 1][0].getHillStrength() >= 3) {
+                    } else if (Math.random() <= hillHeightParamTemp - 0.2 && blocks[i - 1][0].getHillStrength() >= 3) { // make sure hill doesnt go negative
                         blocks[i][0].setHill(true, blocks[i - 1][0].getHillStrength() - 2);
                         hillWidthCounter ++;
                     }
@@ -170,7 +176,7 @@ public class TerrainGenerator {
             if (tempZPos >= grassLevel + 2) {
                 return true; // forces grass placement
             } else if (tempXPos > 0) {
-                if (blocks[tempXPos - 1][tempZPos].getType().equals("grass") && (Math.random() <= flatParamTemp)){
+                if (blocks[tempXPos - 1][tempZPos].getType().equals("grass") && (Math.random() <= flatParamTemp && !blocks[tempXPos][0].isHill())){
                     return true; // randomly decides grass placement based off flatParamTemp
                 } else if (tempZPos >= grassLevel - 1) {
                     // random grass placement
