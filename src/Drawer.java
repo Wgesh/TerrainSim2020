@@ -4,12 +4,14 @@ import java.awt.Graphics;
 public class Drawer {
     
     public static void drawTerrain(Graphics g, int panelHeight, int panelWidth, MaterialBlock[][] blocks, int x, int z) {
+        // fill background with blue sky
         g.setColor(new Color(115, 225, 255)); // blue for sky
         g.fillRect(0, 0, panelWidth, panelHeight);
 
         int blockSizeX = panelWidth / x;
         int blockSizeZ = panelHeight / z;
         
+        // draw all the blocks
         for (int i = 0; i < z; i ++) {
             for (int k = 0; k < x; k ++) {
                 if (blocks[k][i].getType().equals("stone")) {

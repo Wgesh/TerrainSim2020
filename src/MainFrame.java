@@ -39,7 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         TextInputFlat = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        TextInputHillHeight1 = new javax.swing.JTextField();
+        TextInputHillWidth = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(861, 592));
@@ -89,7 +89,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        TextInputX.setText("50");
+        TextInputX.setText("75");
 
         TextInputZ.setText("50");
 
@@ -111,13 +111,18 @@ public class MainFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Hill Frequency (0-100)");
 
-        jLabel5.setText("Hill Width (0-100)");
+        jLabel5.setText("Hill Width (0-40)");
 
-        TextInputHillHeight.setText("1");
+        TextInputHillHeight.setText("0.8");
+        TextInputHillHeight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextInputHillHeightActionPerformed(evt);
+            }
+        });
 
         TextInputGrass.setText("7");
 
-        TextInputHillFreq.setText("1");
+        TextInputHillFreq.setText("80");
 
         jLabel6.setText("Terrain Flatness (0-1)");
 
@@ -128,9 +133,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Hill Height (0-100)");
+        jLabel7.setText("Hill Height (0-1)");
 
-        TextInputHillHeight1.setText("1");
+        TextInputHillWidth.setText("15");
 
         javax.swing.GroupLayout PanelControlsLayout = new javax.swing.GroupLayout(PanelControls);
         PanelControls.setLayout(PanelControlsLayout);
@@ -173,7 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextInputHillHeight1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(TextInputHillWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(PanelControlsLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(ButtonGenerate, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,7 +214,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(16, 16, 16)
                 .addGroup(PanelControlsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextInputHillHeight1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextInputHillWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(74, 74, 74)
                 .addComponent(ButtonGenerate))
@@ -246,28 +251,36 @@ public class MainFrame extends javax.swing.JFrame {
             double flatParam = Double.parseDouble(TextInputFlat.getText());
 
             int hillFreqParam = Integer.parseInt(TextInputHillFreq.getText());
-            int hillHeightParam = Integer.parseInt(TextInputHillHeight.getText());
+            double hillHeightParam = Double.parseDouble(TextInputHillHeight.getText());
+            int hillWidthParam = Integer.parseInt(TextInputHillWidth.getText());
             
-            if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam)) {
-                TerrainGenerator.generateTerrain(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam);
+            if (TerrainGenerator.parameterCheck(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam, hillWidthParam)) {
+                TerrainGenerator.generateTerrain(inputX, inputZ, grassParam, flatParam, hillFreqParam, hillHeightParam, hillWidthParam);
                 
                 int panelHeight = PanelCanvas.getHeight();
                 int panelWidth = PanelCanvas.getWidth();
                 Graphics g = PanelCanvas.getGraphics();
                 Drawer.drawTerrain(g, panelHeight, panelWidth, TerrainGenerator.blocksArray(), inputX, inputZ);
                 
+                TerrainGenerator.printBottomlayer(inputX); // TEMP
+                
                 TextMessageOutput.setText("Terrain Drawn!");
             } else {
                 TextMessageOutput.setText("Something wrong with inputs!");
             }
         } catch (Exception e) {
-            TextMessageOutput.setText("Something wrong with inputs!");
+            System.out.println(e);
+            TextMessageOutput.setText("Something wrong with inputsssss!");
         }
     }//GEN-LAST:event_ButtonGenerateActionPerformed
 
     private void TextInputFlatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextInputFlatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextInputFlatActionPerformed
+
+    private void TextInputHillHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextInputHillHeightActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextInputHillHeightActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,7 +326,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField TextInputGrass;
     private javax.swing.JTextField TextInputHillFreq;
     private javax.swing.JTextField TextInputHillHeight;
-    private javax.swing.JTextField TextInputHillHeight1;
+    private javax.swing.JTextField TextInputHillWidth;
     private javax.swing.JTextField TextInputX;
     private javax.swing.JTextField TextInputZ;
     private javax.swing.JTextArea TextMessageOutput;

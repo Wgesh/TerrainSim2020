@@ -20,8 +20,4 @@ stone - 1/6 chance for dirt
 stone - 1/200 chance for dirt
 
 ^^^ generation stuff for 20 block vertical ^^^
-
-
-
-
-*use try catch statements!*
+(original design)
