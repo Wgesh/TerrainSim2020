@@ -95,12 +95,16 @@ public class TerrainGenerator {
                     block = new MaterialBlock("grass");
                 } else if ((int)(Math.random()*randomDirtStoneCoefficient)+1 == 1) {
                     block = new MaterialBlock("dirt");
+                } else if ((int)(Math.random()*28)+1 == 1) {
+                    block = new MaterialBlock("gravel");
                 } else {
                     block = new MaterialBlock("stone");
                 }
             } else {
                 if ((int)(Math.random()*randomDirtStoneCoefficient)+1 == 1) {
                     block = new MaterialBlock("dirt");
+                } else if ((int)(Math.random()*28)+1 == 1) {
+                    block = new MaterialBlock("gravel");
                 } else {
                     block = new MaterialBlock("stone");
                 }

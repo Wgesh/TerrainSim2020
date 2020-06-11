@@ -140,7 +140,7 @@ public class MainFrame extends javax.swing.JFrame {
         TextInputGrass.setText("45");
         PanelControls.add(TextInputGrass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 70, -1));
 
-        TextInputHillFreq.setText("90");
+        TextInputHillFreq.setText("93");
         PanelControls.add(TextInputHillFreq, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 70, -1));
 
         jLabel6.setText("Terrain Flatness (0-1)");

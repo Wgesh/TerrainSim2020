@@ -15,7 +15,10 @@ public class Drawer {
         for (int i = 0; i < z; i ++) {
             for (int k = 0; k < x; k ++) {
                 if (blocks[k][i].getType().equals("stone")) {
-                    g.setColor(new Color(92, 92, 92)); // gray for stone
+                    g.setColor(new Color(92, 92, 92)); // grey for stone
+                    g.fillRect(blockSizeX * k, panelHeight - (blockSizeZ * i), blockSizeX, blockSizeZ);
+                } else if (blocks[k][i].getType().equals("gravel")) {
+                    g.setColor(new Color(140, 140, 140)); // lighter grey for gravel
                     g.fillRect(blockSizeX * k, panelHeight - (blockSizeZ * i), blockSizeX, blockSizeZ);
                 } else if (blocks[k][i].getType().equals("dirt")) {
                     g.setColor(new Color(99, 58, 7)); // brown for dirt
