@@ -129,7 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel5.setText("Hill Width (0-40)");
         PanelControls.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 474, -1, -1));
 
-        TextInputHillHeight.setText("0.7");
+        TextInputHillHeight.setText("0.75");
         TextInputHillHeight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextInputHillHeightActionPerformed(evt);
@@ -137,7 +137,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         PanelControls.add(TextInputHillHeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(146, 430, 70, -1));
 
-        TextInputGrass.setText("45");
+        TextInputGrass.setText("35");
         PanelControls.add(TextInputGrass, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 70, -1));
 
         TextInputHillFreq.setText("93");
@@ -157,7 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel7.setText("Hill Height (0-1)");
         PanelControls.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 434, -1, -1));
 
-        TextInputHillWidth.setText("15");
+        TextInputHillWidth.setText("23");
         PanelControls.add(TextInputHillWidth, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 470, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
