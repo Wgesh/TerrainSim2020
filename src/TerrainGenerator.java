@@ -32,6 +32,7 @@ public class TerrainGenerator {
         blocks = new MaterialBlock[x][z];
         totalBlocks = x * z;
         
+        // set variables so they can be used throughout the class
         tempZPos = z - 1;
         
         grassLevel = grassParam;
@@ -211,7 +212,7 @@ public class TerrainGenerator {
     }
     
     // prints blocks into output for testing
-    public static void printBlocks(int x, int z) { // used for initial testing
+    public static void printBlocks(int x, int z) {
         System.out.println("");
         for (int i = z - 1; i > -1; i --) {
             for (int k = 0; k < x; k ++) {
